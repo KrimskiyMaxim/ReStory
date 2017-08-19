@@ -1,0 +1,279 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&subset=cyrillic');
+/* 
+
+	ОБЩЕЕ
+
+*/
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	color: #eee;
+}
+body {
+	line-height: 135%;
+	font-size: 1em;
+	background: #e9e9e9;
+}
+input {outline:none;}
+/*
+
+		ШАПКА САЙТА
+
+*/
+#top {
+	display: flex;
+	padding: 17px;
+	background: #333;
+	color: #fff;
+}
+#logo {
+	flex: 1;
+	font-size: 2em;
+	text-align: left;
+}
+#menu {
+	flex: 3;
+	text-align: center;
+}
+#menu a {
+	margin: 0 7px;
+}
+#menu .separator {
+	display: inline;
+	font-size: 1.1em;
+}
+#search {
+	border: 1px solid #EEE;
+    -webkit-border-radius: 50px;
+   	-moz-border-radius: 50px;
+    border-radius: 50px;
+	color: #333;
+	padding: 0 7px;
+	font-size: 1em;
+	cursor: text;
+}
+#auth {
+	flex: 1;
+	text-align: right;
+}
+#auth a {
+	margin: 0 7px;
+}
+#auth .separator {
+	display: inline;
+	font-size: 1.1em;
+}
+/*
+
+		ТЕЛО САЙТА
+
+*/
+article {
+
+}
+#article {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+}
+#content {
+	width: 1100px;
+	display: flex;
+	flex-wrap: wrap;
+}
+#posts, #top-posts {
+	text-align: center;
+	background: white;
+}
+/*Левая часть. Новости*/
+#posts {
+	align-content: flex-start;
+	display: flex;
+	flex: 3;
+	flex-wrap: wrap;
+	padding: 10px;
+	order: 1;
+}
+#last-post {
+	flex-basis: 100%;
+	margin-bottom: 50px;
+}
+#last-post .img-post {
+	height: 350px;
+	margin-bottom: 10px;
+}
+#last-post .more {
+	margin-top: 10px;
+}
+#last-post .label-post {
+	padding: 15px;
+	font-size: 0.9em;
+}
+#last-post .label-post-up {
+	font-size: 2em;
+	line-height: 135%;
+}
+.post {
+	flex-basis: calc(33.33% - 15px);
+	margin: 7.5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.img-post {
+	width: 100%;
+	height: 140px;
+	overflow: hidden;
+	position:relative;
+}
+.img-post img {
+	width: 100%;
+	position:absolute;
+	z-index: 2;
+	margin: auto;
+	left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+.label-post {
+	font-size: 0.8em;
+	display: flex;
+	flex-direction:column;
+	justify-content:space-between;
+	text-align: left;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	position:absolute;
+	padding: 5px;
+	background: rgba(0,0,0,0.54);
+	z-index: 1;
+	cursor: pointer;
+}
+.label-post:hover {
+	z-index: 3;
+}
+.label-post-up {
+	display: flex;
+	justify-content:space-between;
+}
+.label-post-down {
+	display: flex;
+	justify-content:space-between;
+}
+.img-post img:hover {
+	z-index: 0;
+}
+.text-post {
+	width: 100%;
+	text-align:justify;
+	margin: 0 auto;
+	color: #333;
+	line-height: 140%;
+}
+.more {
+	background:#4C4C4C;
+	padding: 3px;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 5px auto 0;
+}
+.more:hover {
+	background: #828282;
+	cursor: pointer;
+}
+.more:active {
+	background: #333;
+}
+/*Правая часть. Топ*/
+#top-posts {
+	flex: 1;
+	order: 2;
+	padding: 10px;
+	display: none;
+	flex-direction: column;
+	margin-left: 7px;
+}
+@media screen and (min-width: 800px) {
+    #top-posts {
+        display: flex;
+    }
+}
+/*
+
+		ФУТЕР САЙТА
+
+*/
+footer {
+	padding: 7px;
+	display: flex;
+	justify-content: space-between;
+	background: #333;
+	color: #fff;
+	font-size: 0.7em;
+}
+
+/*
+
+	ДОБАВЛЕНИЕ ПОСТОВ
+
+*/
+
+
+
+#addArticle {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	margin: 0 auto;
+	width: 60%;
+}
+#addArticle p {
+	font-size: 2em;
+	color: #333;
+	text-align: center;
+	margin: 20px 0;
+}
+#addArticle .label-post {
+	cursor: auto;
+}
+#addArticle .label-post-down {
+	cursor: default;
+}
+#addArticle input[type=file] {
+	display: none;
+}
+#upload {
+	font-size: 3em;
+}
+#upload:hover {
+	color: #828282;
+	cursor: pointer;
+}
+#upload:active {
+	color: #333;
+}
+.addArticle {
+	background: none;
+	border: none;
+	font-size: 1em;
+}
+#done {
+	font-size: 1em;
+	border: none;
+}
+#label-post-up .addArticle {
+	font-size: 2em;
+}
+.text-post .addArticle {
+	border: 1px solid #333;
+	width: 100%;
+	height: 150px;
+	color: #333;
+	padding: 10px;
+	box-sizing: border-box;
+}
