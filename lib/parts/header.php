@@ -14,5 +14,12 @@
 		<a>Войти</a>
 		<a class="separator">|</a>
 		<a>Регистрация</a>
+		<div id="box-auth">
+			<form method="post" name="form_auth">
+				<input type="text" name="login_auth" id="login_auth" placeholder="Введите логин">
+				<input type="password" name="password_auth" id="password_auth" placeholder="Введите пароль">
+				<input style="display: none" type="submit" name="submit_auth" id="submit_auth" value="Войти">
+			</form>
+		</div>
 	</div>
 </div>
