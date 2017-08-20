@@ -24,7 +24,7 @@ class queryDB extends connectDB{
 	function deleteString($table, $id) { /*Удаляет строку с определенным ID*/
 		$this->query("DELETE FROM `$table` WHERE `$table`.`id` = $id");
 	}
-	function nextIDs($table) { /*Возвращает следующией ID в таблице*/
+	function nextID($table) { /*Возвращает следующией ID в таблице*/
 		$result = $this->query("SELECT * FROM `$table` ORDER BY `$table`.`id` DESC");
 			while ($row = $result->fetch_assoc()) {
 				$array[] = $row;

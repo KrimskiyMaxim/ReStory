@@ -17,9 +17,9 @@ function getTop($lim) {
 	}
 	return($array);
 }
-function nextID() {
+function nextIDs() {
 	$begin = new queryDB;
-	$result = $begin->nextIDs('articles');
+	$result = $begin->nextID('articles');
 	return $result;
 }
 function numberArticles() {

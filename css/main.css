@@ -90,7 +90,7 @@ input {outline:none;}
 	font-size: 1em;
 	cursor: text;
 }
-
+#enter:hover ~ #box-auth { display: flex;}
 /*
 
 		ТЕЛО САЙТА

@@ -11,7 +11,7 @@
 		<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
 	</div>
 	<div id="auth">
-		<a>Войти</a>
+		<a id = "enter">Войти</a>
 		<a class="separator">|</a>
 		<a>Регистрация</a>
 		<div id="box-auth">
