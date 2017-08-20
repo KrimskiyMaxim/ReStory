@@ -4,7 +4,7 @@
 	<?
 		$title = "ReSrory";
 		require_once("lib/parts/head.php");
-		require_once "lib/framework.php";
+		require_once "lib/frame.php";
 		require_once "lib/articles.php";
 	?>
 </head>
@@ -38,7 +38,7 @@
 					'.$post[$i]["little_text"].' 
 				</div>
 				<div class="more">Далее...</div>
-			</div>
+				</div>
 				');
 			}	
 		?>

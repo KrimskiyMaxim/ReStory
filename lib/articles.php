@@ -1,6 +1,6 @@
 <?
 function getArticles($start, $end) {
-	$begin = new connectDB;
+	$begin = new queryDB;
 	$result = $begin->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start, $end");
 	$array = array();
 	while ($row = $result->fetch_assoc()) {
@@ -9,7 +9,7 @@ function getArticles($start, $end) {
 	return($array);
 }	
 function getTop($lim) {
-	$begin = new connectDB;
+	$begin = new queryDB;
 	$result = $begin->query("SELECT * FROM `articles` ORDER BY `articles`.`views` DESC LIMIT $lim");
 	$array = array();
 	while ($row = $result->fetch_assoc()) {
@@ -18,18 +18,17 @@ function getTop($lim) {
 	return($array);
 }
 function nextID() {
-	$array = getArticles(0, 1);
-	$nextID = $array[0]['id'];
-	$nextID++;
-	return $nextID;
+	$begin = new queryDB;
+	$result = $begin->nextIDs('articles');
+	return $result;
 }
 function numberArticles() {
-	$begin = new connectDB;
-	$result = $begin->query("SELECT * FROM `articles` ORDER BY `id` DESC");
-	return($result->num_rows);
+	$begin = new queryDB;
+	$begin->numberRecords('articles');
+	return($begin);
 }
 function addArticle($id, $title, $little, $full){
-	$begin = new connectDB;
+	$begin = new queryDB;
 	$result = $begin->query("INSERT INTO `articles` (`id`, `title`, `little_text`, `full_text`, `author`, `views`, `rating`, `date`) VALUES ('".$id."', '".$title."', '".$little."', '".$full."', '1', '0', '0', UNIX_TIMESTAMP())");
 	echo('<script>window.location="/";</script>');
 }

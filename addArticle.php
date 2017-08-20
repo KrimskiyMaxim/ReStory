@@ -4,7 +4,7 @@
 	<?
 		$title = "Добавить пост";
 		require_once("lib/parts/head.php");
-		require_once "lib/framework.php";
+		require_once "lib/frame.php";
 		require_once "lib/articles.php";
 	?>
 </head>
