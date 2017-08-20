@@ -33,7 +33,6 @@
 					<div class="label-post-up">
 					<div><input name="title" class="addArticle" type="text" placeholder="Название статьи"></div>
 					<div><input type="file" multiple accept="image/*" id="img_case" name="img_case"/><label for="img_case"><i id="upload" class="fa fa-arrow-circle-up" aria-hidden="true"></i></label></div>
-					<input
 					</div>
 					<div class="label-post-down">
 					<div>Admin (<? echo(date("d M, Y")); ?>) </div>
