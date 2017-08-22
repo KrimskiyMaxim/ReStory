@@ -25,7 +25,7 @@
 	<article>
 	<div id="addArticle">
 	<p>Добавление статьи</p>
-	<form method="post" action="" name="form" enctype="multipart/form-data" id="form">
+	<form method="post" action="" name="form_addArticle" enctype="multipart/form-data" id="form_addArticle">
 		<div id="posts">
 			<div class="post" id="last-post">
 					<div class="img-post">
@@ -47,7 +47,6 @@
 				</div>
 				<input class="more" id="done" name="done" value="Готово" type="submit">
 			</div>
-			<script src="js/script.js"></script>
 		</div>
 	</form>
 	</div>	

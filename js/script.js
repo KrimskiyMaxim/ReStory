@@ -7,6 +7,11 @@ $('#img_case').change(function () {
                     $('#preview').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
+				var image = $('#preview').width();
+					alert(image);
             } 
         }
+});
+$('#enter').click(function() {
+	$('#box-auth').fadeToggle();
 });
