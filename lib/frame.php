@@ -38,9 +38,16 @@ class queryDB extends connectDB{
 		return($result->num_rows);
 	}
 	function searchID($table, $id) { /*Возвращает строку с определенным ID*/
-		
+		$result = $this->query("SELECT * FROM `$table` WHERE `id` = $id");
+		return($result->fetch_assoc());
+	}
+	function searchElement($table, $id, $element) { /*Возвращает ряд со строки с определенным ID*/
+		$result = $this->query("SELECT * FROM `$table` WHERE `id` = $id");
+		$row = $result->fetch_assoc();
+		return($row[$element]);
 	}
 	function unic($table, $row, $element) { /*Уникален ли элемент в ряду таблицы (Допустим, login или email)*/
-		
+		$result = $this->query("SELECT * FROM `$table` WHERE `$row` LIKE '$element'");
+		if($result->num_rows == 0) return(true); else return(false);
 	}
 }
