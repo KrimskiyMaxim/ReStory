@@ -27,9 +27,15 @@ function numberArticles() {
 	$begin->numberRecords('articles');
 	return($begin);
 }
-function addArticle($id, $title, $little, $full){
+function addArticle($id, $title, $little, $full, $author){
 	$begin = new queryDB;
-	$result = $begin->query("INSERT INTO `articles` (`id`, `title`, `little_text`, `full_text`, `author`, `views`, `rating`, `date`) VALUES ('".$id."', '".$title."', '".$little."', '".$full."', '1', '0', '0', UNIX_TIMESTAMP())");
+	$result = $begin->query("INSERT INTO `articles` (`id`, `title`, `little_text`, `full_text`, `author`, `views`, `rating`, `date`) VALUES ('".$id."', '".$title."', '".$little."', '".$full."', '$author', '0', '0', UNIX_TIMESTAMP())");
 	echo('<script>window.location="/";</script>');
+}
+function viewPlus($id) {
+	$begin = new queryDB;
+	$result = $begin->searchID('articles', $id);
+	$nextVeiw = $result['views'] + 1;
+	$begin->query("UPDATE `articles` SET `views` = '$nextVeiw' WHERE `articles`.`id` = $id");
 }
 ?>

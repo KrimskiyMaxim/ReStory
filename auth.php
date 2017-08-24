@@ -1,4 +1,4 @@
-<? session_start(); ?>
+<?session_start();?>
 <!doctype html>
 <html>
 <head>
@@ -27,7 +27,7 @@
 		<div id="user_date">
 			<input type="text" name="login_auth" id="login_auth" placeholder="Логин">
 			<input type="password" name="password_auth" id="password_auth" placeholder="Пароль">
-			<input type="submit" name="submit_auth" id="submit_auth" value="Зарегистрировать">
+			<input type="submit" name="submit_auth" id="submit_auth" value="Войти">
 		</div>
 	</form>
 	</div>

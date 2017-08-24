@@ -10,7 +10,7 @@ class addUser{
 		if ($this->errors == false) {
 			$send = new queryDB;
 			$send->query("INSERT INTO `users` (`id`, `login`, `password`, `email`, `name`, `fname`, `date_reg`, `level`) VALUES ('$nextID', '$login', MD5('$password'), '$email', '$name', '$fname', UNIX_TIMESTAMP(), 'NULL')");
-			echo('<script>alert("Аккаунт создан.");</script>');
+			$auth = new users($login);
 		}
 	}
 	function login($obj){
@@ -87,6 +87,7 @@ class users {
         $_SESSION['USER_FNAME'] = $row["fname"];
         $_SESSION['USER_LEVEL'] = $row["level"];
         $_SESSION['USER_DATE_REG'] = $row["date_reg"];
+		echo('<script>window.location="/";</script>');
 	}
 }
 ?>

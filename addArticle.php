@@ -1,4 +1,4 @@
-<? session_start(); ?>
+<?session_start();?>
 <!doctype html>
 <html>
 <head>
@@ -20,10 +20,11 @@
 		$name_file = nextIDs();
 		move_uploaded_file($_FILES['img_case']['tmp_name'],"articles/img/"."$name_file.jpg");
 		$func = 'addArticle';
-		$func($name_file, $_POST['title'], $_POST['little_text'], $_POST['full_text']);
+		$func($name_file, $_POST['title'], $_POST['little_text'], $_POST['full_text'], $_SESSION['USER_ID']);
 		}
 	?>
 	<article>
+	<?php if(isset($_SESSION['USER_ID'])): ?>
 	<div id="addArticle">
 	<p>Добавление статьи</p>
 	<form method="post" action="" name="form_addArticle" enctype="multipart/form-data" id="form_addArticle">
@@ -36,11 +37,11 @@
 					<div><input type="file" multiple accept="image/*" id="img_case" name="img_case"/><label for="img_case"><i id="upload" class="fa fa-arrow-circle-up" aria-hidden="true"></i></label></div>
 					</div>
 					<div class="label-post-down">
-					<div>Admin (<? echo(date("d M, Y")); ?>) </div>
+					<div><? echo(ucfirst($_SESSION['USER_FNAME']).' '.ucfirst($_SESSION['USER_NAME']))?> (<? echo(date("d M, Y")); ?>) </div>
 					<div><i class="fa fa-eye" aria-hidden="true"></i> 0</div>
 					</div>
 					</div>
-					<img id="preview" src="articles/img/none.jpg">
+					<img id="preview" src="img/none_article.jpg">
 					</div>
 				<div class="text-post">
 					<textarea name="little_text" class="addArticle" type="text" placeholder="Краткое содержание статьи"></textarea>
@@ -50,7 +51,10 @@
 			</div>
 		</div>
 	</form>
-	</div>	
+	</div>
+	<?php else :?>
+	<?="<script>window.location='/';</script>"?>
+	<?php endif;?>
 	</article>
 	<footer>
 		<? require_once("lib/parts/footer.php"); ?>
