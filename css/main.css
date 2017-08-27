@@ -29,7 +29,7 @@ input {outline:none;}
 
 #top {
 	display: flex;
-	flex-direction: row;
+	align-items: center;
 	padding: 17px;
 	background: #333;
 	color: #fff;
@@ -40,6 +40,8 @@ input {outline:none;}
 	text-align: left;
 }
 #menu {
+	display: flex;
+	justify-content: center;
 	flex: 3;
 	text-align: center;
 }
@@ -50,15 +52,27 @@ input {outline:none;}
 	display: inline;
 	font-size: 1.1em;
 }
-#search {
-	border: 1px solid #EEE;
-    -webkit-border-radius: 50px;
-   	-moz-border-radius: 50px;
-    border-radius: 50px;
-	color: #333;
+#search-box {
+	display: flex;
+	position: relative;
+	top: -1px;
+	align-items: center;
 	padding: 0 7px;
 	font-size: 1em;
+    border-radius: 50px;
+	color: #333;
+	background: #EEE;
+}
+#search-box #search{
+	border: none;
+	width: 140px;
+	color: #333;
+	margin: 0px -7px 5px;
+	background: none;
 	cursor: text;
+}
+#search-key {
+	color: #333;
 }
 #auth {
 	flex: 1;
@@ -187,11 +201,21 @@ article {
 	z-index: 3;
 }
 .post, .full-post {
-	width: 244px;
+	width: 248px;
 	margin: 7.5px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+}
+#posts .post {
+	background:#E8E8E8;
+	padding: 4px;
+	box-sizing: border-box;
+}
+#posts #last-post {
+	background: none;
+	padding: 5px;
+	box-sizing: border-box;
 }
 .full-post {
 	justify-content: flex-start;
@@ -274,8 +298,14 @@ article {
 	background:#4C4C4C;
 	padding: 3px;
 	box-sizing: border-box;
+	position: relative;
 	width: 100%;
 	margin: 5px auto 0;
+}
+#posts .post .more {
+	width: calc(100% + 8px);
+	left: -4px;
+	bottom: -4px;
 }
 .more:hover {
 	background: #828282;
@@ -283,6 +313,21 @@ article {
 }
 .more:active {
 	background: #333;
+}
+.page {
+	flex-basis: 100%;
+	margin-top: 10px;
+	color: #333;
+	font-size: 1.6em;
+	display: flex;
+	align-content: center;
+	align-items:center;
+	justify-content: center;
+}
+.page a {
+	color: #333;
+	margin: 0 10px;
+	cursor: pointer;
 }
 /*Правая часть. Топ*/
 #top-posts {

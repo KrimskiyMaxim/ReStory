@@ -41,8 +41,11 @@
 		?>
 		</div>
 		<div id="top-posts">
+		<div style="font-size: 1.6em;">
+			<i style="color: #333;" class="fa fa-star" aria-hidden="true"></i> <span style="color: #333;" >Популярное:</span>
+		</div>
 		<?
-			$post = getTop(5);
+			$post = getTop(4);
 			for($i = 0; $i<count($post); $i++){
 				echo('
 				<div class="post" style="flex-basis:auto;">
@@ -51,7 +54,7 @@
 							<div class="label-post">
 									<div class="label-post-up">'.$post[$i]["title"].'</div>
 									<div class="label-post-down">
-										<div>Admin ('.date("d M, Y", $post[$i]["date"]).') </div>
+										<div>'.$authorName["fname"].' '.$authorName["name"].' ('.date("d M, Y", $post[$i]["date"]).') </div>
 										<div><i class="fa fa-eye" aria-hidden="true"></i> '.$post[$i]["views"].'</div>
 									</div>
 							</div>

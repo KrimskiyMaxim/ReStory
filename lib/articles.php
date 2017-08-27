@@ -1,7 +1,25 @@
 <?
-function getArticles($start, $end) {
+function getArticles($start, $number) {
 	$begin = new queryDB;
-	$result = $begin->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start, $end");
+	$result = $begin->query("SELECT * FROM `articles` ORDER BY `id` DESC LIMIT $start, $number");
+	$array = array();
+	while ($row = $result->fetch_assoc()) {
+		$array[] = $row;
+	}
+	return($array);
+}
+function getSearchArticles($string, $row, $start, $number) {
+	$begin = new queryDB;
+	$result = $begin->query("SELECT * FROM `articles` WHERE `$row` LIKE '%$string%' ORDER BY `id` DESC LIMIT $start, $number");
+	$array = array();
+	while ($row = $result->fetch_assoc()) {
+		$array[] = $row;
+	}
+	return($array);
+}
+function numSearchArticles($string, $row) {
+	$begin = new queryDB;
+	$result = $begin->query("SELECT * FROM `articles` WHERE `$row` LIKE '%$string%'");
 	$array = array();
 	while ($row = $result->fetch_assoc()) {
 		$array[] = $row;

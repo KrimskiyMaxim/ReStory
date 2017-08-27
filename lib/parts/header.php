@@ -4,15 +4,19 @@
 	</div>
 	<div id="menu">
 	<?php if(isset($_SESSION['USER_ID'])): ?>
-		<a href="#">Все посты</a>
-		<a href="#">Мои посты</a>
+		<a href="/">Все посты</a>
+		<a href="mypost.php">Мои посты</a>
 		<a href="addArticle.php">Добавить пост</a>
 		<a class="separator">|</a>
-		<a><input type="text" id="search"></a>
-		<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+		<div id="search-box">
+		<a><input type="text" id="search" placeholder="<? if(isset($_GET['source'])): echo($_GET['source']); endif;?>"></a>
+		<a href="#"><i id='search-key' class="fa fa-search" aria-hidden="true"></i></a>
+		</div>
 	<?php else :?>
-		<a><input type="text" id="search"></a>
-		<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+		<div id="search-box">
+		<a><input type="text" id="search" placeholder="<? if(isset($_GET['source'])): echo($_GET['source']); endif;?>"></a>
+		<a href="#"><i id='search-key' class="fa fa-search" aria-hidden="true"></i></a>
+		</div>
 	<? endif; ?>
 	</div>
 	<div id="auth">

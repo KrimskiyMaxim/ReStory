@@ -20,23 +20,23 @@
 	<div id="content">
 		<div id="posts">
 		<?
-			$post = getArticles(0, 10);
+			if (!isset($_SESSION['USER_ID'])) {
+				echo('<h1 style="color:#333; margin-top: 30px;">Ничего не найдено</h1>');
+			}
+			$post = getSearchArticles($_SESSION['USER_ID'], 'author', 0, 12);
+			$numRecords = numSearchArticles($_SESSION['USER_ID'], 'author');
 			$numPages = new queryDB;
-			$numPages = ceil(($numPages->numberRecords('articles')) / 12);
+			$numPages = ceil(count($numRecords) / 12);
 			if(isset($_GET['page'])) {
 			if($_GET['page'] > 1 && $_GET['page'] <= $numPages) {
 				$i = $_GET['page'];
-				$start = 12 * $i - 14;
-				$post = getArticles($start, 12);
+				$start = 12 * $i - 12;
+				$post = getSearchArticles($_SESSION['USER_ID'], 'author', $start, 12);
 			}}
 			for($i = 0; $i<count($post); $i++){
 				$authorName = new queryDB;
 				$authorName = $authorName->searchID('users', $post[$i]["author"]);
 				$x = '';
-				if ($i==0) {
-					$x = "id=\"last-post\"";
-					!(isset($_GET['page']) && $_GET['page'] > 1 && $_GET['page'] <= $numPages)?:$x = '';
-				}
 				echo('
 				<div class="post" '.$x.'>
 				<div class="img-post">
@@ -55,10 +55,11 @@
 				<a href=article.php?id='.$post[$i]["id"].'><div class="more">Далее...</div></a>
 				</div>
 				');
-			}	
+			}
 		?>
 		<div class="page">
 				<?
+			if (isset($post[0]['id'])) {
 				if ($numPages > 1) {
 					(isset($_GET['page']))?$nowPage = $_GET['page']:$nowPage = 1;
 					($nowPage == 1)?$prewPage=1:$prewPage=$nowPage-1;
@@ -67,6 +68,7 @@
 					if(isset($_GET['page'])){echo($_GET['page']);} else {echo('1');}
 					echo('<a href="?page='.$nextPage.'"<i class="fa fa-chevron-circle-right" aria-hidden="true"></i></a>');
 				}
+			}
 				?>
 		</div>
 		</div>
@@ -77,6 +79,8 @@
 		<?
 			$post = getTop(4);
 			for($i = 0; $i<count($post); $i++){
+				$authorName = new queryDB;
+				$authorName = $authorName->searchID('users', $post[$i]["author"]);
 				echo('
 				<div class="post" style="flex-basis:auto;">
 				<div class="img-post">

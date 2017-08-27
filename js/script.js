@@ -30,6 +30,10 @@ $("#img_case").change(function (e) {
         img.src = url.createObjectURL(file);
     }
 });
+$('#search-key').click(function() {
+	var obj = $('#search').val();
+	window.location = "search.php?source="+obj;
+});
 $('#enter').click(function() {
 	$('#box-auth').fadeToggle();
 });

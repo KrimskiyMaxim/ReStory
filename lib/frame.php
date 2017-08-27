@@ -50,4 +50,13 @@ class queryDB extends connectDB{
 		$result = $this->query("SELECT * FROM `$table` WHERE `$row` LIKE '$element'");
 		if($result->num_rows == 0) return(true); else return(false);
 	}
+	function searchResult($table, $row, $string, $strictly) { /*Возвращает строки поиска по элементу в определенном ряду*/
+		($strictly)?$x = "":$x="%";
+		$result = $this->query("SELECT * FROM `$table` WHERE `$row` LIKE '".$x.$string.$x."'");
+		$array = array();
+		while ($row = $result->fetch_assoc()) {
+			$array[] = $row;
+		}
+		return($array);
+		}
 }
