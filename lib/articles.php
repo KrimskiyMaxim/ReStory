@@ -50,6 +50,17 @@ function addArticle($id, $title, $little, $full, $author){
 	$result = $begin->query("INSERT INTO `articles` (`id`, `title`, `little_text`, `full_text`, `author`, `views`, `rating`, `date`) VALUES ('".$id."', '".$title."', '".$little."', '".$full."', '$author', '0', '0', UNIX_TIMESTAMP())");
 	echo('<script>window.location="/";</script>');
 }
+function editArticles($id, $title, $little_text, $full_text) {
+	$begin = new queryDB;
+	$result = $begin->query("UPDATE `articles` SET `title` = '$title', `little_text` = '$little_text', `full_text` = '$full_text' WHERE `articles`.`id` = $id");
+	echo('<script>window.location="/article.php?id='.$id.'";</script>');
+}
+function delArticles($id) {
+	$begin = new queryDB;
+	$begin->deleteString('articles', $id);
+	unlink('articles/img/'.$id.'.jpg');
+	echo('<script>window.location="/";</script>');
+}
 function viewPlus($id) {
 	$begin = new queryDB;
 	$result = $begin->searchID('articles', $id);

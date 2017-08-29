@@ -42,7 +42,9 @@
 				<div class="img-post">
 					<a href=article.php?id='.$post[$i]["id"].'>
 						<div class="label-post">
-								<div class="label-post-up">'.$post[$i]["title"].'</div>
+								<div class="label-post-up">
+									<div>'.$post[$i]["title"].'</div>
+								</div>
 								<div class="label-post-down">
 									<div> '.$authorName["fname"].' '.$authorName["name"].' ('.date("d M, Y", $post[$i]["date"]).') </div>
 									<div><i class="fa fa-eye" aria-hidden="true"></i> '.$post[$i]["views"].'</div>
@@ -77,6 +79,8 @@
 		<?
 			$post = getTop(4);
 			for($i = 0; $i<count($post); $i++){
+				$authorName = new queryDB;
+				$authorName = $authorName->searchID('users', $post[$i]["author"]);
 				echo('
 				<div class="post" style="flex-basis:auto;">
 				<div class="img-post">

@@ -200,6 +200,18 @@ article {
 	background: #333;
 	z-index: 3;
 }
+#label-post-edit {
+	top: 0;
+	padding: 5px 15px;
+	font-size: 0.9em;
+	width: 100%;
+	display: flex;
+	justify-content:flex-end;
+	box-sizing: border-box;
+	position:absolute;
+	background: #333;
+	z-index: 3;
+}
 .post, .full-post {
 	width: 248px;
 	margin: 7.5px;
@@ -268,13 +280,12 @@ article {
 .label-post:hover {
 	z-index: 3;
 }
-.label-post-up {
+.label-post-down, .label-post-up {
 	display: flex;
 	justify-content:space-between;
 }
-.label-post-down {
-	display: flex;
-	justify-content:space-between;
+.label-post-up a {
+	margin: 0;
 }
 .img-post img:hover {
 	z-index: 0;
