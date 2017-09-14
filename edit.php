@@ -13,7 +13,7 @@
 	<?php 
 	$post = new queryDB();
 	$post = $post->searchID('articles', $_GET['id']);
-	if(isset($_SESSION['USER_ID']) && $_SESSION['USER_ID'] == $post["author"]): ?>
+	if(isset($_SESSION['USER_ID']) && $_SESSION['USER_ID'] == $post["author"] || isset($_SESSION['USER_ID']) && $_SESSION['USER_LEVEL'] >= 100): ?>
 	<header>
 		<?
 			require_once("lib/parts/header.php");

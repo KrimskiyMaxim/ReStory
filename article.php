@@ -29,7 +29,7 @@
 					}
 				$authorName = new queryDB;
 				$authorName = $authorName->searchID('users', $post["author"]);
-					if(isset($_SESSION['USER_ID']) && $_SESSION['USER_ID'] == $post["author"]) {
+					if(isset($_SESSION['USER_ID']) && $_SESSION['USER_ID'] == $post["author"] || isset($_SESSION['USER_ID']) && $_SESSION['USER_LEVEL'] >= 100) {
 						$var = "
 							<div id='label-post-edit'>
 								<a href='edit.php?id=".$post["id"]."'><i class='fa fa-pencil' aria-hidden='true'></i></a>
